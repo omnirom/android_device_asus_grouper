@@ -32,6 +32,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := custom_grouper
 PRODUCT_DEVICE := grouper
-PRODUCT_BRAND := Android
+PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 7
+PRODUCT_MANUFACTURER := asus
 PRODUCT_RESTRICT_VENDOR_FILES := false
+
+# Kernel inline build
+TARGET_KERNEL_CONFIG := tegra3_android_defconfig
+TARGET_VARIANT_CONFIG := tegra3_android_defconfig
+TARGET_SELINUX_CONFIG := tegra3_android_defconfig
