@@ -55,6 +55,7 @@ WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 TARGET_BOOTLOADER_BOARD_NAME := grouper
+TARGET_NO_BOOTLOADER := true
 
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
@@ -77,3 +78,30 @@ endif
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 BOARD_USES_GROUPER_MODULES := true
+
+# Required for CWM
+BOARD_HAS_NO_SELECT_BUTTON := true
+
+TARGET_KERNEL_SOURCE := kernel/asus/grouper
+TARGET_KERNEL_CONFIG := XPerience_grouper_defconfig #Need fork my Own kernel from https://github.com/NexPerience/android_kernel_asus_grouper
+
+BOARD_SEPOLICY_DIRS += \
+	device/asus/grouper/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+	file_contexts \
+	genfs_contexts \
+	app.te \
+	btmacreader.te \
+	device.te \
+	drmserver.te \
+	file.te \
+	gpsd.te \
+	init_shell.te \
+	keystore.te \
+	mediaserver.te \
+	rild.te \
+	sensors_config.te \
+	surfaceflinger.te \
+	system.te \
+	zygote.te
